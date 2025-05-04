@@ -4,16 +4,16 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="og:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
-    <title>Пасхалка с изображением</title>
+    <title>Утренний кофе</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background-color: #fff600;
         }
         .container {
             text-align: center;
@@ -22,16 +22,22 @@
             display: none;
             margin-top: 20px;
             font-size: 18px;
-            color: #333;
+            color: #000;
             background-color: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border: 2px solid #000;
             border-radius: 5px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: pre-wrap;
+            text-align: left;
         }
         img {
             max-width: 100%;
             height: auto;
             cursor: pointer;
+            border: 3px solid #000;
         }
     </style>
 </head>
@@ -39,20 +45,32 @@
 
     <div class="container">
         <img src="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png" alt="Секретное изображение" onclick="showMessage()">
-        <div id="message">«Мы даже ни секунды не
-							должны пребывать в убеждении, что наше самое глубокое
-							знание бытия является истинным. Все наши знания - лишь
-							нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
-							пенного «барашка», появившегося на гребне волны, одной из
-							бесчисленного количества волн на поверхности бескрайнего океана бытия».</div>
+        <div id="message"></div>
     </div>
 
     <script>
+        const text = `«Мы даже ни секунды не
+должны пребывать в убеждении, что наше самое глубокое
+знание бытия является истинным. Все наши знания - лишь
+нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
+пенного «барашка», появившегося на гребне волны, одной из
+бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
+
         function showMessage() {
-            // Показываем сообщение при клике на изображение
-            document.getElementById('message').style.display = 'block';
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'block';
+            let i = 0;
+            messageDiv.innerHTML = '';
+            const interval = setInterval(() => {
+                messageDiv.innerHTML += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(interval);
+                }
+            }, 25); // скорость печати
         }
     </script>
 
 </body>
 </html>
+
