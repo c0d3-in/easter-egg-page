@@ -3,7 +3,7 @@
 <head>
     <meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Утренний кофе">
-	<meta name="twitter:description" content="">
+	<meta name="twitter:description" content="Утренний кофе">
 	<meta name="twitter:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
 
     <title>Утренний кофе</title>
@@ -11,15 +11,19 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
         body {
-            font-family: 'Roboto Mono', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #fff600;
-            color: black;
-        }
+			display: flex;
+			justify-content: center; /* по горизонтали */
+			align-items: center;     /* по вертикали */
+			height: 100vh;
+			margin: 0;
+			background-color: #fff600;
+			font-family: 'Roboto Mono', monospace;
+			color: black;
+		}
+
+		.container {
+			text-align: center;
+		}
 
         .container {
             text-align: center;
@@ -28,7 +32,7 @@
         #message {
             display: none;
             margin-top: 20px;
-            font-size: 20px;
+            font-size: 24px;
             padding: 10px;
             border-radius: 5px;
             white-space: pre-wrap;
