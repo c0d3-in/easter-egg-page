@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:card" content="summary_large_image">
+    <meta property="og:title" content="Утренний кофе">="og:title" content="Утренний кофе">
+    <meta property="og:description" content="">
     <meta property="og:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
+
     <title>Утренний кофе</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
         body {
+            font-family: 'Roboto Mono', monospace;
             display: flex;
-            justify-content: center; /* Центрирование по горизонтали */
-            align-items: center;     /* Центрирование по вертикали */
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #fff600;
             color: black;
-            font-family: 'Roboto Mono', monospace;
+            text-align: center; /* Это выровняет все содержимое по центру */
         }
 
         .container {
-            text-align: center; /* Выравнивание текста по центру */
+            text-align: center;
         }
 
         #message {
             display: none;
-            font-size: 25px;
+            margin-top: 20px;
+            font-size: 24px;
             padding: 10px;
             border-radius: 5px;
             white-space: pre-wrap;
             position: relative;
-            text-align: left; /* Выравнивание текста внутри блока */
+            text-align: center; /* Выравнивание текста внутри блока по центру */
         }
 
         .cursor {
@@ -63,35 +67,40 @@
         <div id="message"><span id="typedText"></span><span class="cursor"></span></div>
     </div>
 
-    <audio id="typeSound" src="audio/computer-keyboard-1.wav" preload="auto"></audio>
+    <audio id="typeSound" src="laptop-keyboard-1.wav" preload="auto"></audio>
 
     <script>
-        const text = `«Мы даже ни секунды не
-						должны пребывать в убеждении, что наше самое глубокое
-						знание бытия является истинным. Все наши знания — лишь
-						нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
-						пенного «барашка», появившегося на гребне волны, одной из
-						бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
+    const text = `«Мы даже ни секунды не
+					должны пребывать в убеждении, что наше самое глубокое
+					знание бытия является истинным. Все наши знания — лишь
+					нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
+					пенного «барашка», появившегося на гребне волны, одной из
+					бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
 
-        function showMessage() {
-            const msgBox = document.getElementById('message');
-            const typedText = document.getElementById('typedText');
-            const typeSound = document.getElementById('typeSound');
-            msgBox.style.display = 'block';
-            typedText.textContent = '';
-            let i = 0;
+    function showMessage() {
+        const msgBox = document.getElementById('message');
+        const typedText = document.getElementById('typedText');
+        const typeSound = document.getElementById('typeSound');
+        msgBox.style.display = 'block';
+        typedText.textContent = '';
+        let i = 0;
 
-            const interval = setInterval(() => {
-                typedText.textContent += text[i];
-                if (text[i] !== ' ' && text[i] !== '\n') {
-                    typeSound.currentTime = 0;
-                    typeSound.play();
-                }
-                i++;
-                if (i >= text.length) clearInterval(interval);
-            }, 30);
-        }
-    </script>
+        // Запускаем звук
+        typeSound.currentTime = 0;
+        typeSound.loop = true;
+        typeSound.play();
+
+        const interval = setInterval(() => {
+            typedText.textContent += text[i];
+            i++;
+            if (i >= text.length) {
+                clearInterval(interval);
+                typeSound.pause();
+                typeSound.currentTime = 0;
+            }
+        }, 30);
+    }
+	</script>
 
 </body>
 </html>
