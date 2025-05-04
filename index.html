@@ -19,11 +19,14 @@
             margin: 0;
             background-color: #fff600;
             color: black;
-            text-align: center; /* Это выровняет все содержимое по центру */
+            text-align: center; /* Центрируем все содержимое */
         }
 
         .container {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         #message {
@@ -34,7 +37,8 @@
             border-radius: 5px;
             white-space: pre-wrap;
             position: relative;
-            text-align: center; /* Выравнивание текста внутри блока по центру */
+            text-align: center; /* Центрируем текст внутри блока */
+            max-width: 80%; /* Чтобы текст не растягивался слишком сильно */
         }
 
         .cursor {
@@ -67,7 +71,7 @@
         <div id="message"><span id="typedText"></span><span class="cursor"></span></div>
     </div>
 
-    <audio id="typeSound" src="audio/computer-keyboard-1.wav" preload="auto"></audio>
+    <audio id="typeSound" src="audio/laptop-keyboard-1.wav" preload="auto"></audio>
 
     <script>
     const text = `«Мы даже ни секунды не
