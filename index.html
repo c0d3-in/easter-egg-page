@@ -26,7 +26,7 @@
         #message {
             display: none;
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 25px;
             padding: 10px;
             border-radius: 5px;
             white-space: pre-wrap;
@@ -66,32 +66,38 @@
     <audio id="typeSound" src="audio/computer-keyboard-1.wav" preload="auto"></audio>
 
     <script>
-        const text = `«Мы даже ни секунды не
-						должны пребывать в убеждении, что наше самое глубокое
-						знание бытия является истинным. Все наши знания — лишь
-						нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
-						пенного «барашка», появившегося на гребне волны, одной из
-						бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
+    const text = `«Мы даже ни секунды не
+					должны пребывать в убеждении, что наше самое глубокое
+					знание бытия является истинным. Все наши знания — лишь
+					нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
+					пенного «барашка», появившегося на гребне волны, одной из
+					бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
 
-        function showMessage() {
-            const msgBox = document.getElementById('message');
-            const typedText = document.getElementById('typedText');
-            const typeSound = document.getElementById('typeSound');
-            msgBox.style.display = 'block';
-            typedText.textContent = '';
-            let i = 0;
+    function showMessage() {
+        const msgBox = document.getElementById('message');
+        const typedText = document.getElementById('typedText');
+        const typeSound = document.getElementById('typeSound');
+        msgBox.style.display = 'block';
+        typedText.textContent = '';
+        let i = 0;
 
-            const interval = setInterval(() => {
-                typedText.textContent += text[i];
-                if (text[i] !== ' ' && text[i] !== '\n') {
-                    typeSound.currentTime = 0;
-                    typeSound.play();
-                }
-                i++;
-                if (i >= text.length) clearInterval(interval);
-            }, 40);
-        }
-    </script>
+        // Запускаем звук
+        typeSound.currentTime = 0;
+        typeSound.loop = true;
+        typeSound.play();
+
+        const interval = setInterval(() => {
+            typedText.textContent += text[i];
+            i++;
+            if (i >= text.length) {
+                clearInterval(interval);
+                typeSound.pause();
+                typeSound.currentTime = 0;
+            }
+        }, 30);
+    }
+	</script>
+
 
 </body>
 </html>
