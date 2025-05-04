@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
+    <title>Пасхалка с изображением</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png" alt="Секретное изображение" onclick="showMessage()">
+        <div id="message">«Мы даже ни секунды не
+							должны пребывать в убеждении, что наше самое глубокое
+							знание бытия является истинным. Все наши знания - лишь
+							нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
+							пенного «барашка», появившегося на гребне волны, одной из
+							бесчисленного количества волн на поверхности бескрайнего океана бытия».</div>
+    </div>
+
+    <script>
+        function showMessage() {
+            // Показываем сообщение при клике на изображение
+            document.getElementById('message').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
