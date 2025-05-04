@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="og:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
+    <meta property="og:image" content="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png">
     <title>Утренний кофе</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Roboto Mono', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #fff600;
+            color: black;
         }
+
         .container {
             text-align: center;
         }
+
         #message {
             display: none;
             margin-top: 20px;
             font-size: 18px;
-            color: #000;
-            background-color: #fff;
-            padding: 15px;
-            border: 2px solid #000;
+            padding: 10px;
             border-radius: 5px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
             white-space: pre-wrap;
-            text-align: left;
+            position: relative;
         }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background: black;
+            margin-left: 2px;
+            animation: blink 0.8s infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            0%   { opacity: 1; }
+            50%  { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         img {
             max-width: 100%;
             height: auto;
             cursor: pointer;
-            border: 3px solid #000;
         }
     </style>
 </head>
@@ -45,32 +60,38 @@
 
     <div class="container">
         <img src="https://i.postimg.cc/v83YzwHJ/1111964e-f7ad-411f-bbc3-61c873171b700.png" alt="Секретное изображение" onclick="showMessage()">
-        <div id="message"></div>
+        <div id="message"><span id="typedText"></span><span class="cursor"></span></div>
     </div>
+
+    <audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_a1b41f4e6c.mp3?filename=typewriter-key-press-193261.mp3" preload="auto"></audio>
 
     <script>
         const text = `«Мы даже ни секунды не
 должны пребывать в убеждении, что наше самое глубокое
-знание бытия является истинным. Все наши знания - лишь
+знание бытия является истинным. Все наши знания — лишь
 нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
 пенного «барашка», появившегося на гребне волны, одной из
 бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
 
         function showMessage() {
-            const messageDiv = document.getElementById('message');
-            messageDiv.style.display = 'block';
+            const msgBox = document.getElementById('message');
+            const typedText = document.getElementById('typedText');
+            const typeSound = document.getElementById('typeSound');
+            msgBox.style.display = 'block';
+            typedText.textContent = '';
             let i = 0;
-            messageDiv.innerHTML = '';
+
             const interval = setInterval(() => {
-                messageDiv.innerHTML += text.charAt(i);
-                i++;
-                if (i >= text.length) {
-                    clearInterval(interval);
+                typedText.textContent += text[i];
+                if (text[i] !== ' ' && text[i] !== '\n') {
+                    typeSound.currentTime = 0;
+                    typeSound.play();
                 }
-            }, 25); // скорость печати
+                i++;
+                if (i >= text.length) clearInterval(interval);
+            }, 40);
         }
     </script>
 
 </body>
 </html>
-
