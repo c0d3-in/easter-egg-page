@@ -32,7 +32,7 @@
         #message {
             display: none;
             margin-top: 20px;
-            font-size: 26px;
+            font-size: 28px;
             padding: 10px;
             border-radius: 5px;
             white-space: pre-wrap;
@@ -58,7 +58,7 @@
         }
 
         img {
-            max-width: 110%;
+            max-width: 120%;
             height: auto;
             cursor: pointer;
         }
@@ -74,12 +74,15 @@
     <audio id="typeSound" src="audio/laptop-keyboard-1.wav" preload="auto"></audio>
 
     <script>
-    const text = `«Мы даже ни секунды не
+    const rawText = `«Мы даже ни секунды не
 					должны пребывать в убеждении, что наше самое глубокое
 					знание бытия является истинным. Все наши знания — лишь
 					нарисованная нашим воображением радужная оболочка пузырька пены, одного из бесчисленного количества пузырьков
 					пенного «барашка», появившегося на гребне волны, одной из
 					бесчисленного количества волн на поверхности бескрайнего океана бытия».`;
+
+	const text = rawText.split('\n').map(line => line.trimStart()).join('\n');
+
 
     function showMessage() {
         const msgBox = document.getElementById('message');
