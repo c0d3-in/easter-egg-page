@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Утренний кофе">
-    <meta name="twitter:description" content="Утренний кофе">
-    <meta name="twitter:image" content="https://i.postimg.cc/pr3g7zGz/1111964e-f7ad-411f-bbc3-61c873171b70.png">
+    <meta property="og:title" content="Утренний кофе">
+	<meta property="og:description" content="Утренний кофе">
+	<meta property="og:image" content="https://i.postimg.cc/pr3g7zGz/1111964e-f7ad-411f-bbc3-61c873171b70.png">
+	<meta property="og:type" content="website">
+	
 
     <title>Утренний кофе</title>
     <style>
@@ -37,8 +38,8 @@
             border-radius: 5px;
             white-space: pre-wrap;
             position: relative;
-            text-align: center; /* Центрируем текст внутри блока */
-            max-width: 80%; /* Чтобы текст не растягивался слишком сильно */
+            text-align: center; 
+            max-width: 80%; 
         }
 
         .cursor {
@@ -58,10 +59,15 @@
         }
 
         img {
-            max-width: 180%;
-            height: auto;
-            cursor: pointer;
-        }
+			max-width: 120%;
+			height: auto;
+		}
+
+		@media (max-width: 600px) {
+			img {
+				max-width: 120%;
+			}
+		}
     </style>
 </head>
 <body>
